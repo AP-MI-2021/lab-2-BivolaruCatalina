@@ -23,18 +23,18 @@ def test_is_palindrome():
 
 def is_superprime(n):
     '''
-    Verifica daca un numar este superprim
+    Verifica daca n este superprim
     :param n: numar intreg
     :return: valoare de adevar in functie de caz
     '''
     copie=n
     if n<2:
         return False
-    elif n%2 == 0:
-        return False
     else:
       while copie != 0:
-          for i in range(3, copie//2):
+          if copie == 1:
+              return False
+          for i in range(2, copie//2):
               if n%i == 0:
                   return False
           copie=copie//10
@@ -47,8 +47,8 @@ def test_is_superprime():
     assert is_superprime(15) == False
     assert is_superprime(37) == True
 
-ShouldRun=True
-while ShouldRun:
+def main():
+ while True:
         optiune=input('Introduce numarul problemei: ')
         if optiune == '5':
             nr1 = int(input('Introduceti numarul: '))
@@ -65,4 +65,5 @@ while ShouldRun:
                 print(f'Numarul nu este superprim')
             test_is_superprime()
         elif optiune == 'x':
-            ShouldRun=False
+            break
+main()
